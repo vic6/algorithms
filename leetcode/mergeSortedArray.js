@@ -5,38 +5,26 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
-var mergeX = function(nums1, m, nums2, n) {
-  nums1 = nums1.splice(0, m);
-  console.log(nums1);
-  let result = [];
-  while (nums1.length && nums2.length) {
-    if (nums1[0] <= nums2[0]) {
-      result.push(nums1.shift());
+
+const merge = (nums1, m, nums2, n) => {
+  let insert = m + n - 1;
+  let lastNum1 = m - 1;
+  let lastNum2 = n - 1;
+
+  while (lastNum1 >= 0 && lastNum2 >= 0) {
+    if (nums1[lastNum1] > nums2[lastNum2]) {
+      nums1[insert--] = nums1[lastNum1--];
     } else {
-      result.push(nums2.shift());
+      nums1[insert--] = nums2[lastNum2--];
     }
   }
-  result = [...result, ...nums1, ...nums2];
-  return result;
-};
-
-var merge = function(nums1, m, nums2, n) {
-  for (let i = 0; i < nums1.length - 1; i++) {
-    if (nums2[0] <= nums1[i]) {
-      // nums1.splice(i, 0, nums2.shift());
-      shiftArray(nums1, nums2.shift(), i);
-    }
+  while (lastNum2 >= 0) {
+    nums1[insert--] = nums2[lastNum2--];
   }
-  console.log(nums1);
 };
 
-function shiftArray(array, newVal, n) {
-  let prevVal = array[n];
-  array[n] = newVal;
-  array[n + 1] = prevVal;
-  console.log(array);
-}
 
-// shiftArray([1, 2, 3, 0, 0], 4, 3);
+console.log(merge([2, 3, 5, 0, 0, 0], 3, [1, 5, 6], 3));
 
-console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
+
+

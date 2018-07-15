@@ -88,4 +88,35 @@ mergeSort3 = list => {
   return merge3(leftSorted, rightSorted);
 };
 
-console.log(mergeSort3([3,6,23,3,298,4, 23, 43, 29, 93]));
+// console.log(mergeSort3([3,6,23,3,298,4, 23, 43, 29, 93]));
+
+const merge4 = (arr1, arr2) => {
+  let result = [];
+  let lPointer = 0;
+  let rPointer = 0;
+  while (lPointer < arr1.length  && rPointer < arr2.length) {
+    if (arr1[rPointer] <= arr2[lPointer]) {
+      result.push(arr1[rPointer++]);
+    } else {
+      result.push(arr2[lPointer++]);
+    }
+  }
+  let remainder = [...arr1.slice([rPointer]), ...arr2.slice([lPointer])];
+  return [...result, ...remainder];
+};
+
+
+const mergeSort4 = (array) => {
+  if (array.length < 2) return array;
+  const mid = Math.floor(array.length / 2);
+  const left = array.slice(0, mid);
+  const right = array.slice(mid);
+  const leftSorted = mergeSort4(left);
+  const rightSorted = mergeSort4(right);
+  console.log(leftSorted);
+  console.log(rightSorted);
+  return merge4(leftSorted, rightSorted);
+};
+
+console.log(mergeSort4([4,2,5,6,4,2,4,96,34,1,43,67,43,2]));
+// console.log(merge([3,6,8], [2,5,7,8,9,10]));
