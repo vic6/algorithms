@@ -9,7 +9,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/leetcode/removeNthFromEnd.js"
+      "program": "${workspaceFolder}/leetcode/containsDup.js"
     }
   ]
 }
