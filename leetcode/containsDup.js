@@ -3,15 +3,15 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    let hash = {};
-    for (let num of nums) {
-      if (hash[num]) {
-        return true;
-      } else {
-        hash[num] = 1;
-      }
+  let hash = {};
+  for (let num of nums) {
+    if (hash[num]) {
+      return true;
+    } else {
+      hash[num] = 1;
     }
-    return false;
+  }
+  return false;
 };
 
-containsDuplicate([1,2,3,1]);
+containsDuplicate([1, 2, 3, 1]);
